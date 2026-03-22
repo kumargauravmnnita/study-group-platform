@@ -1,15 +1,23 @@
 .App {
-  text-align: center;
-  padding: 50px;
+  min-height: 100vh;
+  background-color: #242424;
+  color: white;
 }
 
-h1 {
-  color: #646cff;
-  font-size: 3rem;
-  margin-bottom: 1rem;
+a {
+  transition: color 0.3s;
 }
 
-p {
-  font-size: 1.2rem;
-  color: #888;
+a:hover {
+  color: #747bff !important;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  transition: all 0.2s;
+}
+
+button:active {
+  transform: scale(0.98);
 }
