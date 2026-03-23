@@ -11,6 +11,13 @@ exports.register = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+    if (!username || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide all required fields",
+      });
+    }
+
     const userExists = await User.findOne({
       $or: [{ email }, { username }],
     });
@@ -43,6 +50,7 @@ exports.register = async (req, res) => {
       },
     });
   } catch (error) {
+    console.error("Register error:", error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -94,6 +102,7 @@ exports.login = async (req, res) => {
       },
     });
   } catch (error) {
+    console.error("Login error:", error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -110,6 +119,7 @@ exports.getMe = async (req, res) => {
       user,
     });
   } catch (error) {
+    console.error("GetMe error:", error);
     res.status(500).json({
       success: false,
       message: error.message,
